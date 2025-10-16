@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "knox",
     "users",
+    "tickets",
 ]
 
 MIDDLEWARE = [
