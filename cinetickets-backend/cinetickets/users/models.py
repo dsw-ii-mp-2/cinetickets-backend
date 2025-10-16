@@ -4,6 +4,8 @@ from django.contrib.auth.models import (
     AbstractBaseUser,
     PermissionsMixin,
 )
+import datetime
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -28,6 +30,12 @@ class UserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
+class MEMBERSHIP(models.IntegerChoices):
+    NONE = 0, "Ninguna"
+    BASIC = 1, "Básica"
+    PREMIUM = 2, "Premium"
+    VIP = 3, "VIP"
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom User model using email instead of username."""
@@ -39,6 +47,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    membership = models.IntegerField(choices=MEMBERSHIP.choices, default=0)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = [
