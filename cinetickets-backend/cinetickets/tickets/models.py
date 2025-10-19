@@ -8,7 +8,7 @@ class Ticket(models.Model):
         on_delete=models.CASCADE,
     )
     movie = models.CharField(max_length=50)
-    function = models.CharField(max_length=400)
+    function = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     seat = models.IntegerField()
 

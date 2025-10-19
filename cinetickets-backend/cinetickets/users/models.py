@@ -48,6 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
     membership = models.IntegerField(choices=MEMBERSHIP.choices, default=0)
 
     USERNAME_FIELD = "email"
