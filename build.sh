@@ -6,5 +6,6 @@ set -o errexit
 pip install -r requirements.txt
 
 # Apply any outstanding database migrations
+ls
 python cinetickets-backend/cinetickets/manage.py migrate
 python cinetickets-backend/cinetickets/manage.py makemigrations
