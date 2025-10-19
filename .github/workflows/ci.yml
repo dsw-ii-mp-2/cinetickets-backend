@@ -30,4 +30,5 @@ jobs:
       # Step 4: Run Django tests (or a simple command)
       - name: Run tests
         run: |
+          cd ..
           python cinetickets/manage.py test || echo "No tests found, but CI is running fine!"
