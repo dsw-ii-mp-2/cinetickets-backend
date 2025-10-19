@@ -11,7 +11,7 @@ class TicketUserSerializer(serializers.ModelSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    bought_by = TicketUserSerializer(read_only=True)
+    bought_by = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Ticket

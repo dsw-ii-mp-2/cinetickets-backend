@@ -13,6 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
             "telephone",
             "is_staff",
             "created_at",
+            "updated_at",
         ]
         read_only_fields = ["id", "is_staff", "created_at"]
 
@@ -29,6 +30,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             "birth_date",
             "password",
             "created_at",
+            "updated_at",
         ]
         extra_kwargs = {"password": {"write_only": True}}
 

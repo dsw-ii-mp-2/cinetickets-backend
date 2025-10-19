@@ -31,5 +31,26 @@ class LoginView(KnoxLoginView):
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
+        if not user.is_active:
+            return Response({"error": "Cuenta desactivada."}, status=400)
         login(request, user)
         return super().post(request, format=None)
+
+class UserDetailView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
+
+
+class SoftDeleteUserView(generics.DestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
+
+    def perform_destroy(self, instance):
+        instance.is_active = False
+        instance.save()

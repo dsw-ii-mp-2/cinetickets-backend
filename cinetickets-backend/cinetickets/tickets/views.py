@@ -10,13 +10,13 @@ class TicketListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = Ticket.objects.all().order_by("-created_at")
-        user = self.request.query_params.get("posted_by")
+        user = self.request.query_params.get("bought_by")
         if user:
             queryset = Ticket.objects.filter(posted_by__id=user).order_by("-created_at")
         return queryset
 
     def perform_create(self, serializer):
-        serializer.save(posted_by=self.request.user)
+        serializer.save(bought_by=self.request.user)
 
 
 class TicketDetail(generics.RetrieveUpdateDestroyAPIView):
