@@ -36,13 +36,13 @@ class LoginView(KnoxLoginView):
         login(request, user)
         return super().post(request, format=None)
 
-class UserDetailView(generics.RetrieveAPIView):
+class UserDetailView(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
 
     def get_object(self):
         return self.request.user
-
+    
 
 class SoftDeleteUserView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
