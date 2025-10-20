@@ -31,4 +31,4 @@ jobs:
       - name: Run tests
         run: |
           cd ..
-          python cinetickets/manage.py test || echo "No tests found, but CI is running fine!"
+          python cinetickets-backend/cinetickets/manage.py test || echo "No tests found, but CI is running fine!"
