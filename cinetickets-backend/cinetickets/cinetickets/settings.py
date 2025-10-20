@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "cinetickets-backend-glcg.onrender.com",
+    "cinetickets-frontend.vercel.app",
     "192.168.0.17",
 ]
 
