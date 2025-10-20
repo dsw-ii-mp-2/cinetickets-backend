@@ -10,7 +10,7 @@ class Ticket(models.Model):
     movie = models.CharField(max_length=50)
     function = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
-    seat = models.IntegerField(unique=True)
+    seat = models.IntegerField()
 
     def __str__(self):
         return f"{self.movie} - {self.bought_by.email}"
