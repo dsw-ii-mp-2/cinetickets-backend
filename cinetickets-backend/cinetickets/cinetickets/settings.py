@@ -67,6 +67,11 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://cinetickets-frontend.vercel.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://cinetickets-frontend.vercel.app",
 ]
 
 ROOT_URLCONF = 'cinetickets.urls'
